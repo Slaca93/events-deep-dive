@@ -4,6 +4,13 @@ on:
     types:
       - opened
   workflow_dispatch:
+  push:
+    branches:
+      - master
+      - 'dev-*' # dev-new dev-this-is-new
+      - 'feat/**' # feat/new 
+    paths-ignore: # if you change the content under workflows folder the action will not run. if you use 'paths' then the action will run.
+      - '.github/workflows/*'
 jobs:
   deploy:
     runs-on: ubuntu-latest
